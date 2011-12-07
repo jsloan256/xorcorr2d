@@ -1,12 +1,13 @@
 run setup_sample_image.m
-cm = xorcorr2d(i, m);
+mask = grabmask([5 5], 5, i);
+cm = xorcorr2d(i, mask);
 peaks = simplepeak(cm);
 
 disp("Image:");
 i
 
 disp("Mask:");
-m
+mask
 
 disp("Correlation Result:");
 cm

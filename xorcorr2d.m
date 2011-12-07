@@ -17,23 +17,21 @@ mask_size = mask_size(1);
 
 % Pad the image by 1/2 the mask size (-1)
 padding = floor(mask_size/2);
-i
 % This assumes square images... needs to be fixed
 im_size = size(im);
 im_size_x = im_size(1);
-im_size_y = im_size(2)
+im_size_y = im_size(2);
 img = zeros(im_size_x+(padding*2),im_size_x+(padding*2));
 size(im)
 size(img)
 
-img(padding+1:(im_size_x+padding*2-1), padding+1:(im_size_y+padding*2-1)) = im;
+img(padding+1:(im_size_x+padding), padding+1:(im_size_y+padding)) = im;
 %%%%%%%%%%% Finish padding (should be padded with data, not zeros) %%%%%%%%%%%%
 
 % Correlate the mask against the image
-%for i = 1:s
-corrmap = 999 * ones(im_size_x,im_size_y);  % might want to fill wil 999's instead
-for x = padding+1:(im_size_x+padding*2-1)
-	for y = padding+1:(im_size_y+padding*2-1)
+corrmap = 999 * ones(im_size_x,im_size_y);
+for x = padding+1:(im_size_x+padding)
+	for y = padding+1:(im_size_y+padding)
 		corrmap(x-padding, y-padding) = sum(sum(xor(img(x-padding:x+padding,y-padding:y+padding), mask)));
 	end
 end
