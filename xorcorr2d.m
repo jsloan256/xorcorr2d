@@ -21,9 +21,7 @@ padding = floor(mask_size/2);
 im_size = size(im);
 im_size_x = im_size(1);
 im_size_y = im_size(2);
-img = zeros(im_size_x+(padding*2),im_size_x+(padding*2));
-size(im)
-size(img)
+img = zeros(im_size_x+(padding*2),im_size_y+(padding*2));
 
 img(padding+1:(im_size_x+padding), padding+1:(im_size_y+padding)) = im;
 %%%%%%%%%%% Finish padding (should be padded with data, not zeros) %%%%%%%%%%%%
